@@ -1,10 +1,10 @@
-CFLAGS=-Wall
+CFLAGS ?= -Wall
 
 all: hstress hserve hplay
 
 hstress: u.o hstress.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -levent
-	
+
 hserve: u.o hserve.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -levent
 
