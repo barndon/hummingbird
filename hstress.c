@@ -99,8 +99,7 @@ mkrate(struct timeval *tv, int count)
 void
 reportcb(int fd, short what, void *arg)
 {
-	struct timeval now, diff;
-	int i, count, milliseconds;
+  int i;
 
 	printf("%d\t", nreport++);
 	printf("%d\t", counts.errors);
@@ -339,7 +338,7 @@ chldreadcb(struct bufferevent *b, void *arg)
 void
 chlderrcb(struct bufferevent *b, short what, void *arg)
 {
-	int *nprocs =(int *)arg;
+	/* int *nprocs =(int *)arg; */
 
 	bufferevent_setcb(b, nil, nil, nil, nil);
 	bufferevent_disable(b, EV_READ | EV_WRITE);
@@ -352,7 +351,7 @@ chlderrcb(struct bufferevent *b, short what, void *arg)
 void
 parentd(int nprocs, int *sockets)
 {
-	int *fdp, i, status, size;
+  int *fdp, i, status; /* size; */
 	pid_t pid;
 	struct bufferevent *b;
 	
@@ -444,7 +443,7 @@ main(int argc, char **argv)
 	int ch, i, nprocs = 1, is_parent = 1, port, *sockets, fds[2];
 	pid_t pid;
 	char *sp, *ap, *host, *cmd = argv[0];
-	struct hostent *he;
+	/* struct hostent *he; */
 
 	/* Defaults */
 	params.count = -1;
